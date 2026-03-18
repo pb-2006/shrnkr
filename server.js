@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const mongoURI = "mongodb+srv://pb-mongodb:iywmom77@shrnkrcluster.qzodsan.mongodb.net/shrnkrDB?retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URI;;
 
 mongoose.connect(mongoURI)
     .then(() => console.log("MongoDB connected"))
