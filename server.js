@@ -50,7 +50,7 @@ app.post('/shorten', (req, res) => {
     saveDB(db);
 
     res.json({
-    shortLink: `https://shrnkr.com/${code}`
+        shortLink: `${req.protocol}://${req.get('host')}/${code}`
     });
 });
 
