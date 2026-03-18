@@ -1,3 +1,17 @@
+const mongoose = require('mongoose');
+const mongoURI = "mongodb+srv://pb-mongodb:<db_password>@shrnkrcluster.qzodsan.mongodb.net/?appName=shrnkrCluster";
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.error("MongoDB connection error:", err));
+
+const urlSchema = new mongoose.Schema({
+    code: { type: String, unique: true },
+    originalURL: String,
+    createdAt: { type: Date, default: Date.now }
+});
+
+const URL = mongoose.model('URL', urlSchema);
+
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
@@ -32,34 +46,32 @@ app.get('/result', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'result.html'));
 });
 
-app.post('/shorten', (req, res) => {
+app.post('/shorten', async (req, res) => {
     const originalURL = req.body.url;
 
     if (!originalURL || !originalURL.startsWith('http')) {
         return res.status(400).json({ error: 'Invalid URL' });
     }
 
-    const db = loadDB();
-
-    let code = generateCode();
-    while (db[code]) {
-        code = generateCode();
+    let code = Math.random().toString(36).substring(2, 7);
+    while (await URL.findOne({ code })) {
+        code = Math.random().toString(36).substring(2, 7);
     }
 
-    db[code] = originalURL;
-    saveDB(db);
+    const newURL = new URL({ code, originalURL });
+    await newURL.save();
 
     res.json({
         shortLink: `${req.protocol}://${req.get('host')}/${code}`
     });
 });
 
-app.get('/:code', (req, res) => {
-    const db = loadDB();
-    const url = db[req.params.code];
+app.get('/:code', async (req, res) => {
+    const code = req.params.code;
+    const urlDoc = await URL.findOne({ code });
 
-    if (url) {
-        res.redirect(url); 
+    if (urlDoc) {
+        res.redirect(urlDoc.originalURL);
     } else {
         res.status(404).send("Invalid or expired link");
     }
