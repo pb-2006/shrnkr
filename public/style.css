@@ -1,0 +1,70 @@
+body {
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: opacity 0.8s ease;
+}
+
+.fadeOut {
+    opacity: 0;
+}
+
+.landing {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.logo {
+    font-size: 80px;
+    letter-spacing: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.logo span {
+    opacity: 0;
+    animation: appear 0.4s forwards;
+}
+
+.logo span:nth-child(1) { animation-delay: 0.2s; }
+.logo span:nth-child(2) { animation-delay: 0.4s; }
+.logo span:nth-child(3) { animation-delay: 0.6s; }
+.logo span:nth-child(4) { animation-delay: 0.8s; }
+.logo span:nth-child(5) { animation-delay: 1s; }
+.logo span:nth-child(6) { animation-delay: 1.2s; }
+
+.line {
+    height: 3px;
+    background: white;
+    width: 0;
+    margin-top: 18px;
+    animation: linegrow 1.6s forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes linegrow {
+    from { width: 0; }
+    to { width: 100%; }
+}

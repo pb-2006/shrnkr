@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SHRNKR Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="nav-left">
+            <a href="index.html" class="logo" onclick="window.scrollTo({top:0, behavior:'smooth'})">SHRNKR</a>
+        </div>
+        <div class="nav-right">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#connect">Connect</a>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="image-box">
+            <img src="images/homePage.jpeg" class="hero-img">
+            <div class="overlay">
+                <h2>Your Short Link is Ready!</h2>
+                <p class="tagline">This link will work forever:</p>
+                <div class="shortener-box">
+                    <input type="text" id="shortLink" readonly>
+                    <button id="copyBtn">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section" id="about">
+        <div class="image-box">
+            <img src="images/about.jpeg" class="section-img">
+            <div class="section-overlay">
+                <h2>About SHRNKR</h2>
+                <p>
+                    SHRNKR is a fast and easy-to-use URL shortening tool. It takes long, complicated web links and turns them into short, clean links that are easy to share. This helps keep your messages, emails, and social media posts tidy and professional. With SHRNKR, sharing links becomes simple, quick, and reliable.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="image-box">
+            <img src="images/why.jpeg" class="section-img">
+            <div class="section-overlay why-overlay">
+                <h2>Why Use a URL Shortener?</h2>
+                <p>
+                    Long URLs can be messy, hard to share, and difficult to remember. A URL shortener turns these links into clean, simple URLs that are easy to share in messages, emails, or social media posts. Short links look professional, save space, and make sharing information faster and more convenient.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="features">
+        <div class="image-box">
+            <img src="images/features.jpeg" class="section-img">
+            <div class="section-overlay">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fa-solid fa-bolt fa-2x"></i>
+                        <h3>Instant Shortening</h3>
+                        <p>Convert long URLs instantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-share-nodes fa-2x"></i>
+                        <h3>Easy Sharing</h3>
+                        <p>Perfect for social media.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-regular fa-copy fa-2x"></i>
+                        <h3>One Click Copy</h3>
+                        <p>Copy links instantly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fa-solid fa-lock fa-2x"></i>
+                        <h3>Reliable Links</h3>
+                        <p>Always works safely.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="connect">
+        <div class="image-box">
+            <img src="images/thankyou.jpeg" class="section-img">
+            <div class="section-overlay">
+                <h2>Thank you for using SHRNKR</h2>
+                <p>Connect with me</p>
+                <div class="connect-links">
+                    <a href="mailto:prachibhosale.main@gmail.com" class="connect-btn">
+                        <i class="fa-solid fa-envelope"></i> Gmail
+                    </a>
+                    <a href="https://www.instagram.com/prachibhosale_/" target="_blank" class="connect-btn">
+                        <i class="fa-brands fa-instagram"></i> Instagram
+                    </a>
+                    <a href="https://www.linkedin.com/in/prachi-bhosale-2a101a289?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" class="connect-btn">
+                        <i class="fa-brands fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/pb-2006" target="_blank" class="connect-btn">
+                        <i class="fa-brands fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="result.js"></script>
+
+</body>
+</html>
