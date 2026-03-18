@@ -1,6 +1,13 @@
+const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
-const mongoURI = "mongodb+srv://pb-mongodb:<db_password>@shrnkrcluster.qzodsan.mongodb.net/?appName=shrnkrCluster";
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+const mongoURI = "mongodb+srv://pb-mongodb:iywmom77@shrnkrcluster.qzodsan.mongodb.net/shrnkrDB?retryWrites=true&w=majority";
+
+mongoose.connect(mongoURI)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
@@ -12,31 +19,8 @@ const urlSchema = new mongoose.Schema({
 
 const URL = mongoose.model('URL', urlSchema);
 
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
-
-const app = express();
-const port = process.env.PORT || 3000;
-
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, 'public')));
-
-const dbFile = path.join(__dirname, 'urls.json');
-
-const loadDB = () => {
-    if (!fs.existsSync(dbFile)) {
-        fs.writeFileSync(dbFile, '{}');
-    }
-    return JSON.parse(fs.readFileSync(dbFile));
-};
-
-const saveDB = (db) => {
-    fs.writeFileSync(dbFile, JSON.stringify(db, null, 4));
-};
-
-const generateCode = () => Math.random().toString(36).substring(2, 7);
 
 app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'home.html'));
